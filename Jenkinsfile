@@ -8,7 +8,7 @@ pipeline{
     stages{
         stage('Checkout') {
             steps {
-                checkout scm   // <-- add this
+                checkout scm   
             }
         }
         stage('Build Docker Image'){
