@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: taskapi
-          image: kanchana20/taskapi:V1
+          image: kanchana20/taskapi:v${env.BUILD_NUMBER}
           ports:
             - containerPort: 8000
           resources:
