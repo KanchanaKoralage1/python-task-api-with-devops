@@ -7,7 +7,7 @@ router=APIRouter()
 
 tasks=[]
 
-#create
+#create tasks
 @router.post("/tasks")
 def create_task(task: Task):
     task.created_at= datetime.now()
@@ -18,7 +18,7 @@ def create_task(task: Task):
     }
 
 
-# get all
+# get all task
 @router.get("/tasks")
 def get_tasks():
     return tasks
