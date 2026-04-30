@@ -6,7 +6,11 @@ pipeline{
     }
 
     stages{
-        
+        stage('Checkout') {
+            steps {
+                checkout scm   // <-- add this
+            }
+        }
         stage('Build Docker Image'){
             steps{
                 sh 'docker build -t $IMAGE:$TAG .'
@@ -14,7 +18,7 @@ pipeline{
         }
         stage('Docker Login'){
             steps{
-                withCredentials([usernamePassword(credentialId:'dockerhub-creds', usernameVariable:'USER', passwordVariable:'PASS')])
+                withCredentials([usernamePassword(credentialsId:'dockerhub-creds', usernameVariable:'USER', passwordVariable:'PASS')])
                 {
                     sh 'echo $PASS | docker login -u $USER --password-stdin'
                 }
