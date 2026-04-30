@@ -7,4 +7,4 @@ app.include_router(router)
 
 @app.get("/")
 def read_root():
-    return {"message": "python task app is running successfully"}
+    return {"message": "python task app is running"}

@@ -40,5 +40,11 @@ pipeline{
                 """
             }
         }
+        stage('Rollout Status Check') {
+            steps {
+                sh "kubectl rollout status deployment/${DEPLOYMENT_NAME} -n ${KUBE_NAMESPACE}"
+            }
+        }
+
     }
 }
