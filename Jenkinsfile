@@ -2,7 +2,10 @@ pipeline{
     agent any
     environment{
         IMAGE="kanchana20/taskapi"
-        TAG="V1"
+        TAG = "v${env.BUILD_NUMBER}"   // auto versioning
+        KUBE_NAMESPACE = "taskapi"
+        DEPLOYMENT_NAME = "task-api-deployment"
+        CONTAINER_NAME = "taskapi"
     }
 
     stages{
@@ -27,6 +30,14 @@ pipeline{
         stage('Push Image'){
             steps{
                 sh 'docker push $IMAGE:$TAG'
+            }
+        }
+        stage('Deploy to Kubernetes') {
+            steps {
+                sh """
+                kubectl set image deployment/${DEPLOYMENT_NAME} \
+                ${CONTAINER_NAME}=${IMAGE}:${TAG} -n ${KUBE_NAMESPACE}
+                """
             }
         }
     }
