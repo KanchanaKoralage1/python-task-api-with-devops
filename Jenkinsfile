@@ -6,11 +6,7 @@ pipeline{
     }
 
     stages{
-        stage('Clone Repo'){
-            steps{
-                git 'https://github.com/KanchanaKoralage1/python-task-app.git'
-            }
-        }
+        
         stage('Build Docker Image'){
             steps{
                 sh 'docker build -t $IMAGE:$TAG .'
