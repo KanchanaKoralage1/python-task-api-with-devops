@@ -2,7 +2,7 @@ pipeline{
     agent any
     environment{
         IMAGE="kanchana20/taskapi"
-        TAG = "v${env.BUILD_NUMBER}"   // auto versioning
+        TAG = "${env.GIT_COMMIT.substring(0,7)}"   
         KUBE_NAMESPACE = "taskapi"
         DEPLOYMENT_NAME = "task-api-deployment"
         CONTAINER_NAME = "taskapi"
