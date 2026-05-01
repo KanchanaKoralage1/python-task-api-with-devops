@@ -6,8 +6,8 @@ metadata:
 spec:
   selector:
     app: taskapi
-  type: NodePort
+  type: LoadBalancer
   ports:
     - port: 8000
       targetPort: 8000
-      nodePort: 30091
+      
