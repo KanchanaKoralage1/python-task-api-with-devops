@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: taskapi
-          image: kanchana20/taskapi:latest
+          image: kanchana20/taskapi:c81680a
           imagePullPolicy: Always
           ports:
             - containerPort: 8000
